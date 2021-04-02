@@ -27,7 +27,7 @@ describe('GET /', function () {
         if (err) {
           return done(err);
         }
-        chai.assert.isTrue(res.text.includes("<h1>Welcome to [TEAM NAME'S] application</h1>"));
+        chai.assert.isTrue(res.text.includes("<h1>Welcome to the best Events Application</h1>"));
         return done();
       });
 
@@ -62,37 +62,37 @@ describe('GET /', function () {
 
 
 
-describe('POST /event', function () {
-  it('adds an event', function (done) {
-  const data = { title: 'test event', description: 'even cooler test' };
-    //specify the url to be intercepted
-    nock("http://localhost:8082")
-      //define the method to be intercepted
-      .post('/event')
-      //respond with a OK and the specified JSON response
-      .reply(200, {
-        "status": 200,
-        "events": [
-          { title: 'an event', id: 1, description: 'something really cool' },
-          { title: 'another event', id: 2, description: 'something even cooler' },
-          data
-        ]
-      });
+// describe('POST /event', function () {
+//   it('adds an event', function (done) {
+//   const data = { title: 'test event', description: 'even cooler test' };
+//     //specify the url to be intercepted
+//     nock("http://localhost:8082")
+//       //define the method to be intercepted
+//       .post('/event')
+//       //respond with a OK and the specified JSON response
+//       .reply(200, {
+//         "status": 200,
+//         "events": [
+//           { title: 'an event', id: 1, description: 'something really cool' },
+//           { title: 'another event', id: 2, description: 'something even cooler' },
+//           data
+//         ]
+//       });
 
-    request(app)
-      .post('/event')
-      .expect(302)
-      .end((err, res) => {
-        if (err) {
-          return done(err);
-        }
-        chai.assert.isTrue(res.text.includes("Redirecting"));
-        return done();
-      });
+//     request(app)
+//       .post('/event')
+//       .expect(302)
+//       .end((err, res) => {
+//         if (err) {
+//           return done(err);
+//         }
+//         chai.assert.isTrue(res.text.includes("Redirecting"));
+//         return done();
+//       });
 
 
-  });
-});
+//   });
+// });
 
 
 
